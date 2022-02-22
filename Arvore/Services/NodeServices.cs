@@ -8,7 +8,7 @@ namespace Arvore.Services
         {
             while (true)
             {
-                Console.WriteLine(new string(' ', 2 * node.Level) + node.Name);
+                Console.WriteLine(new string(' ', 3 * node.Level) + node.Name);
                 if (node.Left is not null) PrintTree(node.Left);
                 if (node.Right is not null)
                 {
@@ -42,9 +42,40 @@ namespace Arvore.Services
             return node.Right is null ? 1 : 2;
         }
 
-        public int HeightNode(Node node)
+        public int HeightNode(Node node, int depthAbsolute = 0)
         {
-            throw new NotImplementedException();
+            while (true)
+            {
+                if (node.Left is not null)
+                {
+                    if (node.Level >= depthAbsolute)
+                    {
+                        var increment = depthAbsolute + 1;
+                        depthAbsolute = HeightNode(node.Left, increment);
+                    }
+                    else
+                    {
+                        var depthRelative = HeightNode(node.Left, node.Left.Level);
+                        if (depthAbsolute < depthRelative) depthAbsolute = depthRelative;
+                    }
+                }
+
+                if (node.Right is not null)
+                {
+                    if (node.Level >= depthAbsolute)
+                    {
+                        var increment = depthAbsolute + 1;
+                        depthAbsolute = HeightNode(node.Right, increment);
+                    }
+                    else
+                    {
+                        var depthRelative = HeightNode(node.Right, node.Right.Level);
+                        if (depthAbsolute < depthRelative) depthAbsolute = depthRelative;
+                    }
+                }
+                break;
+            }
+            return depthAbsolute;
         }
 
         public static int DepthNode(Node node) => node.Level;
