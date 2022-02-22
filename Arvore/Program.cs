@@ -36,7 +36,7 @@ Console.WriteLine($"O nível do nó {nodeDad.Name} é {NodeServices.LevelNode(no
 Console.WriteLine(new string('-', 40));
 services.PrintSubTree(nodeDad);
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"A altura do nó {nodeDad.Name} é {services.HeightNode(nodeDad)}");
+Console.WriteLine($"A altura do nó {nodeDad.Name} é {NodeServices.HeightNode(nodeDad)}");
 
 
 Console.ReadKey();

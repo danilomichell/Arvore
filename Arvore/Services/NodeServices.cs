@@ -42,7 +42,7 @@ namespace Arvore.Services
             return node.Right is null ? 1 : 2;
         }
 
-        public int HeightNode(Node node, int depthAbsolute = 0)
+        private static int HeightNodeAbsolute(Node node, int depthAbsolute = 0)
         {
             while (true)
             {
@@ -51,11 +51,11 @@ namespace Arvore.Services
                     if (node.Level >= depthAbsolute)
                     {
                         var increment = depthAbsolute + 1;
-                        depthAbsolute = HeightNode(node.Left, increment);
+                        depthAbsolute = HeightNodeAbsolute(node.Left, increment);
                     }
                     else
                     {
-                        var depthRelative = HeightNode(node.Left, node.Left.Level);
+                        var depthRelative = HeightNodeAbsolute(node.Left, node.Left.Level);
                         if (depthAbsolute < depthRelative) depthAbsolute = depthRelative;
                     }
                 }
@@ -65,17 +65,22 @@ namespace Arvore.Services
                     if (node.Level >= depthAbsolute)
                     {
                         var increment = depthAbsolute + 1;
-                        depthAbsolute = HeightNode(node.Right, increment);
+                        depthAbsolute = HeightNodeAbsolute(node.Right, increment);
                     }
                     else
                     {
-                        var depthRelative = HeightNode(node.Right, node.Right.Level);
+                        var depthRelative = HeightNodeAbsolute(node.Right, node.Right.Level);
                         if (depthAbsolute < depthRelative) depthAbsolute = depthRelative;
                     }
                 }
                 break;
             }
             return depthAbsolute;
+        }
+
+        public static int HeightNode(Node node)
+        {
+            return HeightNodeAbsolute(node) - node.Level;
         }
 
         public static int DepthNode(Node node) => node.Level;
