@@ -1,9 +1,13 @@
-﻿using Arvore.Classes;
-
-namespace Arvore.Services
+﻿namespace Arvore.Classes
 {
-    public class NodeServices
+    public class Tree
     {
+        public Tree(Node nodeRoot)
+        {
+            NodeRoot = nodeRoot;
+        }
+        public Node NodeRoot { get; set; }
+
         public void PrintTree(Node node)
         {
             while (true)
@@ -20,7 +24,7 @@ namespace Arvore.Services
             }
         }
 
-        public static bool NodeLeaf(Node node) => node.Left is null && node.Right is null;
+        public bool NodeLeaf(Node node) => node.Left is null && node.Right is null;
 
         public void PrintSubTree(Node node)
         {
@@ -35,14 +39,14 @@ namespace Arvore.Services
             PrintTree(node.Right);
         }
 
-        public static int DegreeNode(Node node)
+        public int DegreeNode(Node node)
         {
             if (NodeLeaf(node))
                 return 0;
             return node.Right is null ? 1 : 2;
         }
 
-        private static int HeightNodeAbsolute(Node node, int depthAbsolute = 0)
+        private int HeightNodeAbsolute(Node node, int depthAbsolute = 0)
         {
             while (true)
             {
@@ -78,12 +82,12 @@ namespace Arvore.Services
             return depthAbsolute;
         }
 
-        public static int HeightNode(Node node)
+        public int HeightNode(Node node)
         {
             return HeightNodeAbsolute(node) - node.Level;
         }
 
-        public static int DepthNode(Node node) => node.Level;
-        public static int LevelNode(Node node) => node.Level;
+        public int DepthNode(Node node) => node.Level;
+        public int LevelNode(Node node) => node.Level;
     }
 }
