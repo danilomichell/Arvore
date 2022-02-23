@@ -29,13 +29,13 @@ Console.WriteLine(tree.NodeLeaf(nodeDad)
 Console.WriteLine(new string('-', 40));
 Console.WriteLine($"O grau do nó {nodeDad.Name} é {tree.DegreeNode(nodeDad)}");
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"A profundidade do nó {nodeDad.Name} é {tree.DepthNode(nodeDad)}");
+Console.WriteLine($"A profundidade do nó {nodeDad.Name} é {tree.HeightNode(nodeDad)}");
 Console.WriteLine(new string('-', 40));
 Console.WriteLine($"O nível do nó {nodeDad.Name} é {tree.LevelNode(nodeDad)}");
 Console.WriteLine(new string('-', 40));
 tree.PrintSubTree(nodeDad);
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"A altura do nó {nodeDad.Name} é {tree.HeightNode(nodeDad)}");
+Console.WriteLine($"A altura do nó {nodeDad.Name} é {tree.DepthNode(nodeDad)}");
 
 
 Console.ReadKey();

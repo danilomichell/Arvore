@@ -46,7 +46,7 @@
             return node.Right is null ? 1 : 2;
         }
 
-        private int HeightNodeAbsolute(Node node, int depthAbsolute = 0)
+        private int DepthNodeAbsolute(Node node, int depthAbsolute = 0)
         {
             while (true)
             {
@@ -55,11 +55,11 @@
                     if (node.Level >= depthAbsolute)
                     {
                         var increment = depthAbsolute + 1;
-                        depthAbsolute = HeightNodeAbsolute(node.Left, increment);
+                        depthAbsolute = DepthNodeAbsolute(node.Left, increment);
                     }
                     else
                     {
-                        var depthRelative = HeightNodeAbsolute(node.Left, node.Left.Level);
+                        var depthRelative = DepthNodeAbsolute(node.Left, node.Left.Level);
                         if (depthAbsolute < depthRelative) depthAbsolute = depthRelative;
                     }
                 }
@@ -69,11 +69,11 @@
                     if (node.Level >= depthAbsolute)
                     {
                         var increment = depthAbsolute + 1;
-                        depthAbsolute = HeightNodeAbsolute(node.Right, increment);
+                        depthAbsolute = DepthNodeAbsolute(node.Right, increment);
                     }
                     else
                     {
-                        var depthRelative = HeightNodeAbsolute(node.Right, node.Right.Level);
+                        var depthRelative = DepthNodeAbsolute(node.Right, node.Right.Level);
                         if (depthAbsolute < depthRelative) depthAbsolute = depthRelative;
                     }
                 }
@@ -82,12 +82,12 @@
             return depthAbsolute;
         }
 
-        public int HeightNode(Node node)
+        public int DepthNode(Node node)
         {
-            return HeightNodeAbsolute(node) - node.Level;
+            return DepthNodeAbsolute(node) - node.Level;
         }
 
-        public int DepthNode(Node node) => node.Level;
+        public int HeightNode(Node node) => node.Level;
         public int LevelNode(Node node) => node.Level;
     }
 }
