@@ -46,40 +46,40 @@
             return node.Right is null ? 1 : 2;
         }
 
-        public int HeightNode(Node node, int depthAbsolute = 0)
+        public int HeightNode(Node node, int heightAbsolute = 0)
         {
             while (true)
             {
                 if (node.Left is not null)
                 {
-                    if (node.Level >= depthAbsolute)
+                    if (node.Level >= heightAbsolute)
                     {
-                        var nodeIncrement = depthAbsolute + 1;
-                        depthAbsolute = HeightNode(node.Left, nodeIncrement);
+                        var nodeIncrement = heightAbsolute + 1;
+                        heightAbsolute = HeightNode(node.Left, nodeIncrement);
                     }
                     else
                     {
-                        var nodeDepthRelative = HeightNode(node.Left, node.Left.Level);
-                        if (depthAbsolute < nodeDepthRelative) depthAbsolute = nodeDepthRelative;
+                        var nodeHeightRelative = HeightNode(node.Left, node.Left.Level);
+                        if (heightAbsolute < nodeHeightRelative) heightAbsolute = nodeHeightRelative;
                     }
                 }
 
                 if (node.Right is not null)
                 {
-                    if (node.Level >= depthAbsolute)
+                    if (node.Level >= heightAbsolute)
                     {
-                        var nodeIncrement = depthAbsolute + 1;
-                        depthAbsolute = HeightNode(node.Right, nodeIncrement);
+                        var nodeIncrement = heightAbsolute + 1;
+                        heightAbsolute = HeightNode(node.Right, nodeIncrement);
                     }
                     else
                     {
-                        var nodeDepthRelative = HeightNode(node.Right, node.Right.Level);
-                        if (depthAbsolute < nodeDepthRelative) depthAbsolute = nodeDepthRelative;
+                        var nodeHeightRelative = HeightNode(node.Right, node.Right.Level);
+                        if (heightAbsolute < nodeHeightRelative) heightAbsolute = nodeHeightRelative;
                     }
                 }
                 break;
             }
-            return depthAbsolute;
+            return heightAbsolute;
         }
 
         public int DepthNode(Node node) => node.Level;
