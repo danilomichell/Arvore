@@ -19,23 +19,23 @@ nodeSon4.AddSon(nodeSon6);
 nodeSon6.AddSon(nodeSon7);
 nodeSon7.AddSon(nodeSon8);
 
-var nodeTree = new Tree(nodeDad);
+var tree = new Tree(nodeDad);
 Console.WriteLine("Árvore completa");
-nodeTree.PrintTree(nodeDad);
+tree.PrintTree(nodeDad);
 Console.WriteLine(new string('-', 40));
-Console.WriteLine(nodeTree.NodeLeaf(nodeDad)
+Console.WriteLine(tree.NodeLeaf(nodeDad)
     ? $"O nó {nodeDad.Name} é um nó folha"
     : $"O nó {nodeDad.Name} não é um nó folha");
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"O grau do nó {nodeDad.Name} é {nodeTree.DegreeNode(nodeDad)}");
+Console.WriteLine($"O grau do nó {nodeDad.Name} é {tree.DegreeNode(nodeDad)}");
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"A altura do nó {nodeDad.Name} é {nodeTree.HeightNode(nodeDad)}");
+Console.WriteLine($"A profundidade do nó {nodeDad.Name} é {tree.DepthNode(nodeDad)}");
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"O nível do nó {nodeDad.Name} é {nodeTree.LevelNode(nodeDad)}");
+Console.WriteLine($"O nível do nó {nodeDad.Name} é {tree.LevelNode(nodeDad)}");
 Console.WriteLine(new string('-', 40));
-nodeTree.PrintSubTree(nodeDad);
+tree.PrintSubTree(nodeDad);
 Console.WriteLine(new string('-', 40));
-Console.WriteLine($"A profundidade do nó {nodeSon3.Name} é {nodeTree.DepthNode(nodeSon3)}");
+Console.WriteLine($"A altura do nó {nodeSon3.Name} é {tree.HeightNode(nodeSon3)}");
 
 
 Console.ReadKey();
